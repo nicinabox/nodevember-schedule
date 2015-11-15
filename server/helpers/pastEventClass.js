@@ -23,7 +23,7 @@ module.exports = function(date, time) {
   var now = new Date().getTime()
   var epoch = toEpoch(date, to24HourTime(time))
 
-  if (epoch < now) {
+  if (now > epoch) {
     return className
   }
 }
