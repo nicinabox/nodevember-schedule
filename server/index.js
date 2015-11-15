@@ -1,7 +1,6 @@
 var Hapi = require('hapi')
 var getSchedule = require('../lib/getSchedule')
 var groupSchedule = require('../lib/groupSchedule')
-var getGroupSizes = require('../lib/getGroupSizes')
 var PORT = process.env.PORT || 3000
 
 var server = new Hapi.Server()
