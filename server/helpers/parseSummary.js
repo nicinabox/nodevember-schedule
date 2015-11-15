@@ -13,5 +13,7 @@ var raw = function (str) {
 }
 
 module.exports = function(summary) {
-  return raw(decode(summary))
+  if (summary) {
+    return raw(decode(summary))
+  }
 }
