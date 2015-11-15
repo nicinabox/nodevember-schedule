@@ -1,3 +1,4 @@
+var _ = require('lodash')
 var Hapi = require('hapi')
 var getSchedule = require('../lib/getSchedule')
 var groupSchedule = require('../lib/groupSchedule')
@@ -40,6 +41,20 @@ server.route({
       .then(function(schedule) {
         reply.view('schedule/index', schedule)
       })
+  }
+})
+
+server.route({
+  method: 'GET',
+  path: '/presentations/{slug}',
+  handler: function (req, reply) {
+    getSchedule().then(function(results) {
+      var matches = _.map(results, function(r) {
+        return _.findWhere(r.slots, { slug: req.params.slug })
+      })
+      reply.view('schedule/show', _.compact(matches)[0])
+    })
+    .catch(reply)
   }
 })
 

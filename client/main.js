@@ -1,5 +1,6 @@
 var STORAGE_KEY = 'nodevember-sechedule-selections'
 var timeSlots = document.querySelectorAll('.js-slot')
+var slotHighlight = document.querySelectorAll('.js-slot-highlight')
 
 var getSelections = function() {
   return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
@@ -38,6 +39,8 @@ var applySelections = function() {
     var el
     if (selection.selected) {
       el = document.getElementById(selection.id)
+      var input = el.querySelector('.js-slot-highlight')
+      input.checked = true
       el.classList.toggle('info')
     }
   })
@@ -53,10 +56,10 @@ var jumpToToday = function() {
 applySelections()
 jumpToToday()
 
-Array.prototype.forEach.call(timeSlots, function(el) {
+Array.prototype.forEach.call(slotHighlight, function(el) {
   el.addEventListener('click', function(e) {
-    var t = e.currentTarget
-    t.classList.toggle('info')
-    saveSelection(t.id, t.classList.contains('info'))
+    var slot = e.currentTarget.parentNode
+    slot.classList.toggle('info')
+    saveSelection(slot.id, slot.classList.contains('info'))
   })
 })

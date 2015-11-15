@@ -31,9 +31,12 @@
                       <td style="white-space:nowrap">{{@key}}</td>
                       {{#each this}}
                         <td colspan="{{colspan ../this.length}}"
-                            id="{{slotId title}}"
+                            id="{{slug}}"
                             class="js-slot slot">
-                          <strong>{{title}}</strong>
+                          <a href="/presentations/{{slug}}">
+                            <strong>{{title}}</strong>
+                          </a>
+
                           {{#if speaker}}
                             <em>by {{speaker}}</em>
                           {{/if}}
@@ -41,6 +44,8 @@
                           <p>
                             {{room}}
                           </p>
+
+                          <input type="checkbox" class="js-slot-highlight">
                         </td>
                       {{/each}}
                     </tr>
