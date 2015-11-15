@@ -43,7 +43,15 @@ var applySelections = function() {
   })
 }
 
+var jumpToToday = function() {
+  var days = ['sunday', 'monday', 'tuesdasy', 'wednesday', 'thursday', 'friday', 'saturday']
+  var d = new Date()
+  var day = days[d.getDay()]
+  window.location.href = '#' + day
+}
+
 applySelections()
+jumpToToday()
 
 Array.prototype.forEach.call(timeSlots, function(el) {
   el.addEventListener('click', function(e) {
