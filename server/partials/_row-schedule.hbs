@@ -1,6 +1,7 @@
 {{#each time_slots}}
   <div class="{{pastEventClass ../date @key}}">
     <h4>{{@key}}</h4>
+    <hr>
     {{#each this}}
       <div id="{{slug}}" class="js-slot slot">
         <div class="media">
@@ -18,6 +19,7 @@
               <em>by {{speaker}}</em>
             {{/if}}
 
+            <br>
             <span>{{room}}</span>
           </div>
         </div>
