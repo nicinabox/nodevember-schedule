@@ -8,6 +8,17 @@ server.connection({ port: PORT })
 
 getSchedule()
 
+server.register(require('inert'), function (err) {
+  if (err) throw err
+  server.route({
+    method: 'GET',
+    path: '/main.js',
+    handler: function (request, reply) {
+      reply.file('client/main.js')
+    }
+  });
+})
+
 server.register(require('vision'), function (err) {
   if (err) {
     console.log('Failed to load vision.')

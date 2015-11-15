@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "handlebars": "^4.0.4",
+    "inert": "^3.2.0",
     "lodash": "^3.10.1",
     "request": "^2.65.0",
     "vision": "^4.0.1"
