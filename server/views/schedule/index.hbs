@@ -2,8 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Nodevember schedule</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+  <style>
+    .slot {
+      white-space: normal !important;
+      min-width: 200px;
+    }
+  </style>
 </head>
 <body>
   <div id="root">
@@ -16,27 +23,31 @@
               {{date}}
             </p>
 
-            <table class="table table-bordered table-responive">
-              <tbody>
-                {{#each time_slots}}
-                  <tr class="{{pastEventClass ../date @key}}">
-                    <td style="white-space:nowrap">{{@key}}</td>
-                    {{#each this}}
-                      <td colspan="{{colspan ../this.length}}">
-                        <strong>{{title}}</strong>
-                        {{#if speaker}}
-                          <em>by {{speaker}}</em>
-                        {{/if}}
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <tbody>
+                  {{#each time_slots}}
+                    <tr class="{{pastEventClass ../date @key}}">
+                      <td style="white-space:nowrap">{{@key}}</td>
+                      {{#each this}}
+                        <td colspan="{{colspan ../this.length}}"
+                            id="{{slotId title}}"
+                            class="js-slot slot">
+                          <strong>{{title}}</strong>
+                          {{#if speaker}}
+                            <em>by {{speaker}}</em>
+                          {{/if}}
 
-                        <p>
-                          {{room}}
-                        </p>
-                      </td>
-                    {{/each}}
-                  </tr>
-                {{/each}}
-              </tbody>
-            </table>
+                          <p>
+                            {{room}}
+                          </p>
+                        </td>
+                      {{/each}}
+                    </tr>
+                  {{/each}}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       {{/each}}
