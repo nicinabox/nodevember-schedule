@@ -46,11 +46,11 @@ server.route({
 
 server.route({
   method: 'GET',
-  path: '/presentations/{slug}',
+  path: '/talks/{id}',
   handler: function (req, reply) {
     getSchedule().then(function(results) {
       var matches = _.map(results, function(r) {
-        return _.findWhere(r.slots, { slug: req.params.slug })
+        return _.findWhere(r.slots, { id: req.params.id })
       })
       reply.view('schedule/show', _.compact(matches)[0])
     })
