@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "schedule": "node ./tasks/schedule.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "request": "^2.65.0"
+    "handlebars": "^4.0.4",
+    "lodash": "^3.10.1",
+    "request": "^2.65.0",
+    "vision": "^4.0.1"
   }
 }
