@@ -9,6 +9,9 @@
     .slot {
       white-space: normal !important;
       min-width: 200px;
+      margin: -15px;
+      margin-bottom: 10px;
+      padding: 15px;
     }
   </style>
 </head>
@@ -23,37 +26,7 @@
               {{date}}
             </p>
 
-            <div class="table-responsive">
-              <table class="table table-bordered">
-                <tbody>
-                  {{#each time_slots}}
-                    <tr class="{{pastEventClass ../date @key}}">
-                      <td style="white-space:nowrap">{{@key}}</td>
-                      {{#each this}}
-                        <td colspan="{{colspan ../this.length}}"
-                            id="{{slug}}"
-                            class="js-slot slot">
-                          <a href="/talks/{{id}}"
-                              class="{{pastEventClass ../../date time}}">
-                            <strong>{{title}}</strong>
-                          </a>
-
-                          {{#if speaker}}
-                            <em>by {{speaker}}</em>
-                          {{/if}}
-
-                          <p>
-                            {{room}}
-                          </p>
-
-                          <input type="checkbox" class="js-slot-highlight">
-                        </td>
-                      {{/each}}
-                    </tr>
-                  {{/each}}
-                </tbody>
-              </table>
-            </div>
+            {{> _row-schedule}}
           </div>
         </div>
       {{/each}}

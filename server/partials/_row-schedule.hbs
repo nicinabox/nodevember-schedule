@@ -1,0 +1,27 @@
+{{#each time_slots}}
+  <div class="{{pastEventClass ../date @key}}">
+    <h4>{{@key}}</h4>
+    {{#each this}}
+      <div id="{{slug}}" class="js-slot slot">
+        <div class="media">
+          <div class="media-left">
+            <input type="checkbox" class="js-slot-highlight media-object">
+          </div>
+          <div class="media-body">
+            <a href="/talks/{{id}}"
+                class="{{pastEventClass ../../date time}}">
+              <strong>{{title}}</strong>
+            </a>
+
+            {{#if speaker}}
+              <br>
+              <em>by {{speaker}}</em>
+            {{/if}}
+
+            <span>{{room}}</span>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+{{/each}}

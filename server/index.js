@@ -28,7 +28,8 @@ server.register(require('vision'), function (err) {
   server.views({
     engines: { hbs: require('handlebars') },
     path: __dirname + '/views',
-    helpersPath: __dirname + '/helpers'
+    helpersPath: __dirname + '/helpers',
+    partialsPath: __dirname + '/partials'
   })
 })
 
