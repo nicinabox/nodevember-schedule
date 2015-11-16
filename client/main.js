@@ -3,6 +3,12 @@ var INFO_CLASS = 'bg-info'
 var timeSlots = document.querySelectorAll('.js-slot')
 var slotHighlight = document.querySelectorAll('.js-slot-highlight')
 
+var getParentByClassName = function(el, className) {
+  className = className.replace(/^\./, '')
+  while ((el = el.parentElement) && !el.classList.contains(className));
+  return el
+}
+
 var getSelections = function() {
   return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
 }
@@ -62,8 +68,8 @@ jumpToToday()
 Array.prototype.forEach.call(slotHighlight, function(el) {
   el.addEventListener('click', function(e) {
     var el = e.currentTarget, i = 3
-    while(i-- && (el = el.parentNode))
-    el.classList.toggle(INFO_CLASS)
-    saveSelection(el.id, el.classList.contains(INFO_CLASS))
+    var slot = getParentByClassName(el, '.slot')
+    slot.classList.toggle(INFO_CLASS)
+    saveSelection(slot.id, slot.classList.contains(INFO_CLASS))
   })
 })
